@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Fond profond légèrement bleuté, plus riche qu'un noir plat */
+    --bg-color: #0a0a0c;
+    --bg-color-alt: #131316;
+    --card-bg: rgba(20, 20, 23, 0.65);
+    --card-border: rgba(255, 255, 255, 0.06);
+
+    --text-primary: #f2efe9;
+    --text-secondary: #a3a09a;
+
+    /* Or affiné en 3 tons pour un rendu plus "matière" que le simple gold plat */
+    --accent-deep: #9c7a3f;
+    --accent: #cfa964;
+    --accent-light: #f0dcae;
+    --gradient-accent: linear-gradient(135deg, var(--accent-deep), var(--accent) 55%, var(--accent-light));
+    --accent-glow: rgba(207, 169, 100, 0.22);
+
+    --font-display: 'Fraunces', 'Space Grotesk', serif;
+    --font-label: 'Space Grotesk', 'Inter', sans-serif;
+    --font-main: 'Inter', sans-serif;
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    margin: 0;
+    padding-bottom: 50px;
+    background:
+        radial-gradient(circle at top right, rgba(207, 169, 100, 0.06), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.03), transparent 50%),
+        linear-gradient(180deg, var(--bg-color), var(--bg-color-alt));
+    background-attachment: fixed;
+}
+
+header { padding: 30px 10%; text-align: center; }
+
+h1 {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 16px;
+    margin-bottom: 6px;
+}
+
+/* Fine ligne signature sous le titre, en dégradé or */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 2px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+/* Menus de contrôle */
+.controls { display: flex; justify-content: center; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+
+input, select {
+    padding: 10px 20px;
+    background: #0f0f11;
+    border: 1px solid #232326;
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-family: var(--font-main);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+select:hover { border-color: var(--accent); cursor: pointer; }
+
+.category-title {
+    font-family: var(--font-label);
+    font-size: 1.05rem;
+    color: var(--accent-light);
+    margin: 30px 20px 15px;
+    border-left: 3px solid var(--accent);
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* Grille principale (Desktop) */
+#liste-produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Lien global de la carte */
+.card-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+}
+
+/* Cartes produits */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid var(--card-border);
+    position: relative;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px var(--accent-glow), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: transform 0.5s var(--ease);
+}
+.card:hover img { transform: scale(1.03); }
+
+.card-content { display: flex; flex-direction: column; padding: 0 5px; }
+
+/* Prix — traité comme un petit sceau plutôt qu'un simple badge plat */
+.price {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gradient-accent);
+    color: #1a1408;
+    font-weight: 700;
+    font-family: var(--font-label);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+    z-index: 10;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Titre du produit */
+.card h3 {
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    margin: 5px 0;
+    text-align: left;
+    font-weight: 600;
+    color: #ece9e2;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Conteneur des Badges */
+.card-infos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.category-badge, .brand-badge {
+    font-family: var(--font-label);
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.category-badge { background: #16161a; color: #a3a09a; border: 1px solid #232326; }
+.brand-badge { background: rgba(207, 169, 100, 0.08); color: var(--accent-light); border: 1px solid rgba(207, 169, 100, 0.3); }
+
+/* Top bar */
+.top-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 20px;
+    background: rgba(10, 10, 12, 0.6);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #232326;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+.top-bar a { color: var(--accent); text-decoration: none; transition: color 0.25s var(--ease); }
+.top-bar a:hover { color: #fff; }
+
+.info-banner {
+    margin: 20px auto;
+    padding: 10px 20px;
+    max-width: 600px;
+    text-align: center;
+    background: rgba(207, 169, 100, 0.05);
+    border: 1px solid rgba(207, 169, 100, 0.15);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.highlight-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    transition: 0.25s var(--ease);
+}
+.highlight-link:hover { background: var(--accent); color: #000; }
+
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(4px); }
+.modal-content { position: relative; margin: 10% auto; width: 80%; max-width: 800px; }
+.modal-content iframe { width: 100%; height: 450px; border-radius: 8px; }
+.close { position: absolute; top: -30px; right: 0; color: white; font-size: 30px; cursor: pointer; }
+
+/* ==========================================
+   OPTIMISATION MOBILE (Écrans < 600px)
+   ========================================== */
+@media (max-width: 600px) {
+    body { overflow-x: hidden; }
+
+    header { padding: 15px 5% 5px; }
+    h1 { font-size: 1.5rem; letter-spacing: 0.3px; margin-bottom: 6px; padding-bottom: 12px; }
+    h1::after { width: 44px; }
+
+    /* 1. Disposition des filtres : recherche pleine largeur + 2 selects */
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 10px 5%;
+        width: 90%;
+    }
+
+    .controls input {
+        grid-column: span 2;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .controls select {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+
+    /* 2. Grille produits : 2 colonnes fixes */
+    #liste-produits {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 10px 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 3. Cartes : image collée aux bords, effet catalogue premium */
+    .card {
+        padding: 0;
+        border-radius: 12px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .card img {
+        height: 230px;
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 0;
+    }
+
+    .card-content {
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .price {
+        top: 8px;
+        left: 8px;
+        padding: 3px 8px;
+        font-size: 0.7rem;
+        border-radius: 6px;
+    }
+
+    .card h3 {
+        font-size: 0.8rem;
+        margin: 4px 0;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block;
+    }
+
+    .card-infos { gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+    .category-badge, .brand-badge {
+        font-size: 0.55rem;
+        padding: 3px 6px;
+        border-radius: 4px;
+    }
+
+    .top-bar { gap: 10px; padding: 10px; font-size: 0.6rem; }
+}

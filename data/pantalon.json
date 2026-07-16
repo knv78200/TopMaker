@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "nom": "Nike Phenom Elite Noir",
+        "categorie": "Pantalons",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesb/phenom elite noir.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 2,
+        "nom": "Nike Phenom Elite Gris",
+        "categorie": "Pantalons",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesb/phenom elite gris.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 3,
+        "nom": "Nike Phenom Elite Bleu",
+        "categorie": "Pantalons",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesb/phenom elite bleu.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    }
+]

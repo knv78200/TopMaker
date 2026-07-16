@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nom": "Nike Phenom Elite Gris",
+        "categorie": "Pull",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesp/phenom elite gris.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 2,
+        "nom": "Nike Tech Gris",
+        "categorie": "Pull",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesp/nike tech gris.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 3,
+        "nom": "Nike Tempo Machine Noir",
+        "categorie": "Pull",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesp/tempo machine noir.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 4,
+        "nom": "Under Armour Demi Zip",
+        "categorie": "Pull",
+        "Marques": "UNDER ARMOUR",
+        "prix": "41.00€",
+        "image": "imagesp/demi zip under.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    }
+]

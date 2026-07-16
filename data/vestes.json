@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nom": "Nike D.Y.E Gris",
+        "categorie": "Vestes",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesv/dye.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    },
+    {
+        "id": 2,
+        "nom": "Nike Tempo Machine Noir",
+        "categorie": "Vestes",
+        "Marques": "NIKE",
+        "prix": "41.00€",
+        "image": "imagesv/tempo machine noir.png",
+        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+    }
+]
