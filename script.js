@@ -1,8 +1,13 @@
 // Liste des fichiers à charger automatiquement depuis le dossier /data/
 // À adapter avec les noms de tes nouveaux fichiers JSON
-const fichiersData = ['chaussures.json', 'pantalon.json', 'pulls.json', 'vestes.json']; 
+const fichiersData = ['vestes.json', 'pantalon.json', 'pulls.json', 'chaussures.json']; 
 
 let produits = [];
+
+// Échappe les guillemets pour une insertion sûre dans un attribut HTML
+function echapperAttribut(valeur) {
+    return String(valeur ?? "").replace(/"/g, "&quot;");
+}
 
 // Fonction pour charger et fusionner tous les fichiers JSON
 async function chargerDonnees() {
@@ -85,16 +90,16 @@ function afficherProduits() {
             // Affichage conditionnel de la marque si elle existe
             const marqueDisplay = p.Marques ? `<span class="brand-badge">${p.Marques}</span>` : "";
 
-            // Ajout du produit (remplacement de p.lienBBD par p.lienCommande)
+            // Le clic n'ouvre pas directement lienWeidian : il déclenche une confirmation (voir plus bas)
             conteneur.innerHTML += `
-            <a href="${p.lienCommande || '#'}" 
-               target="_blank" 
-               class="card-link" 
-               onclick="gtag('event', 'clic_produit', {'nom_produit': '${p.nom.replace(/'/g, "\\'")}', 'categorie': '${p.categorie}'});">
+            <a href="${p.lienWeidian || '#'}"
+               class="card-link"
+               data-nom="${echapperAttribut(p.nom)}"
+               data-categorie="${echapperAttribut(p.categorie)}">
                 <div class="card">
                     <span class="price">${p.prix}</span>
                     <img src="${p.image}" alt="${p.nom}" onerror="this.style.display='none'">
-                    
+
                     <div class="card-content">
                         <h3>${p.nom}</h3>
                         <div class="card-infos">
@@ -125,3 +130,54 @@ document.getElementById("filtreCategorie").addEventListener("change", () => {
 
 // 3. Quand on change le filtre de marque
 document.getElementById("filtreMarques").addEventListener("change", afficherProduits);
+
+// --- Confirmation avant redirection vers Weidian ---
+
+const confirmModal = document.getElementById("confirmModal");
+let lienEnAttente = null;
+
+function ouvrirConfirmModal(lien) {
+    lienEnAttente = lien;
+    confirmModal.classList.add("is-open");
+    confirmModal.setAttribute("aria-hidden", "false");
+}
+
+function fermerConfirmModal() {
+    confirmModal.classList.remove("is-open");
+    confirmModal.setAttribute("aria-hidden", "true");
+    lienEnAttente = null;
+}
+
+// 4. Clic sur une carte produit : on intercepte pour demander confirmation
+document.getElementById("liste-produits").addEventListener("click", (evenement) => {
+    const lienCarte = evenement.target.closest(".card-link");
+    if (!lienCarte) return;
+
+    evenement.preventDefault();
+
+    const lien = lienCarte.getAttribute("href");
+    if (!lien || lien === "#") return; // Aucun lien Weidian renseigné pour ce produit
+
+    if (typeof gtag === "function") {
+        gtag("event", "clic_produit", {
+            nom_produit: lienCarte.dataset.nom,
+            categorie: lienCarte.dataset.categorie
+        });
+    }
+
+    ouvrirConfirmModal(lien);
+});
+
+// 5. Actions de la modale de confirmation
+document.getElementById("confirmProceed").addEventListener("click", () => {
+    if (lienEnAttente) window.open(lienEnAttente, "_blank", "noopener");
+    fermerConfirmModal();
+});
+document.getElementById("confirmCancel").addEventListener("click", fermerConfirmModal);
+document.getElementById("confirmClose").addEventListener("click", fermerConfirmModal);
+confirmModal.addEventListener("click", (evenement) => {
+    if (evenement.target === confirmModal) fermerConfirmModal();
+});
+document.addEventListener("keydown", (evenement) => {
+    if (evenement.key === "Escape") fermerConfirmModal();
+});

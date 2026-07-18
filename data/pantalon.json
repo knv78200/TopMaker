@@ -6,7 +6,7 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesb/phenom elite noir.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesb/phenom elite gris.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     },
     {
         "id": 3,
@@ -24,6 +24,6 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesb/phenom elite bleu.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     }
 ]

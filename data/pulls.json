@@ -6,7 +6,7 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesp/phenom elite gris.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/pf6wmW5D"
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesp/nike tech gris.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     },
     {
         "id": 3,
@@ -24,7 +24,7 @@
         "Marques": "NIKE",
         "prix": "41.00€",
         "image": "imagesp/tempo machine noir.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     },
     {
         "id": 4,
@@ -33,6 +33,6 @@
         "Marques": "UNDER ARMOUR",
         "prix": "41.00€",
         "image": "imagesp/demi zip under.png",
-        "lienBBD": "https://www.bbdbuyeu.com/goods/WEIDIAN/7786994836?from=search&inviteCode=qKlpbc"
+        "lienWeidian": "https://k.youshop10.com/iDi5NUXU"
     }
 ]

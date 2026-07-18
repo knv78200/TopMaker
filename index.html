@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catalogue de produits KNV FINDS - Découvrez nos meilleures sélections.">
+    <meta name="description" content="Catalogue de produits TOP MAKER - Découvrez nos meilleures sélections.">
     <title>TOP MAKER | Boutique</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -24,10 +24,10 @@
             
             <select id="filtreCategorie" aria-label="Filtrer par catégorie">
                 <option value="all">Tous les produits</option>
-                <option value="Chaussures">Chaussures</option>
+                <option value="Vestes">Vestes</option>
                 <option value="Pull">Pull</option>
                 <option value="Pantalons">Pantalons</option>
-                <option value="Vestes">Vestes</option>
+                <option value="Chaussures">Chaussures</option>
             </select>
 
             <select id="filtreMarques" aria-label="Filtrer par marque">
@@ -37,7 +37,19 @@
     </header>
 
     <main id="liste-produits"></main>
-    
+
+    <div class="modal" id="confirmModal" aria-hidden="true">
+        <div class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+            <span class="close" id="confirmClose" aria-label="Fermer">&times;</span>
+            <h2 id="confirmTitle" class="confirm-title">Redirection vers Weidian</h2>
+            <p class="confirm-text">Tu es sur le point de quitter TOP MAKER pour accéder à la fiche produit sur Weidian.</p>
+            <div class="confirm-actions">
+                <button type="button" class="btn-cancel" id="confirmCancel">Annuler</button>
+                <button type="button" class="btn-confirm" id="confirmProceed">Continuer</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
